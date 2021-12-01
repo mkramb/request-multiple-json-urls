@@ -1,27 +1,58 @@
-interface IOptions {
-  readonly concurrency: number;
-  readonly onErrorContinue: boolean;
-  readonly onErrorCallback: (error: Error) => void;
+import fetch from 'isomorphic-unfetch';
+import { parallelLimit, AsyncFunction } from 'async';
+
+interface RequestOptions {
+  readonly concurrencyLimit: number;
+  readonly continueOnError: boolean;
+  readonly fetch: typeof fetch;
 }
 
-const defaultOptions: IOptions = {
-  concurrency: 2,
-  onErrorContinue: false,
-  onErrorCallback: () => {},
+type ResponseJSON = Record<string, unknown>;
+type ResponseResults = {
+  readonly data: { items: ResponseJSON[] };
+  readonly timeGenerated: string;
 };
 
-function requestMultipleUrls(urls: string[], options: IOptions): Promise<string> {
+const defaultOptions: RequestOptions = {
+  concurrencyLimit: 1,
+  continueOnError: false,
+  fetch,
+};
+
+async function requestMultipleUrls(
+  urls: string[],
+  options: Partial<RequestOptions> = {}
+): Promise<ResponseJSON[]> {
   const currentOptions = {
     ...defaultOptions,
-    options,
+    ...options,
   };
 
-  console.log({
-    urls,
-    currentOptions,
+  const tasks = urls.map((url): AsyncFunction<ResponseJSON, Error> => {
+    return async (callback) => {
+      try {
+        const response = await fetch(url);
+        const content: ResponseJSON = await response.json();
+
+        callback(null, content);
+      } catch (error) {
+        if (currentOptions.continueOnError) {
+          callback(null);
+        } else {
+          callback(error as Error);
+        }
+      }
+    };
   });
 
-  return Promise.resolve('content');
+  const results = await parallelLimit<ResponseJSON, ResponseResults[], Error>(
+    tasks,
+    currentOptions.concurrencyLimit
+  );
+
+  return results.map((result) => {
+    return result?.data?.items?.[0] ?? null;
+  });
 }
 
-export { requestMultipleUrls };
+export { requestMultipleUrls, ResponseResults };

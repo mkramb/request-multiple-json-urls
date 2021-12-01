@@ -6,12 +6,6 @@ const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-usd.json',
 ];
 
-requestMultipleUrls(urls, {
-  concurrency: 2,
-  onErrorContinue: true,
-  onErrorCallback: (error) => {
-    console.error(error);
-  },
-}).then((content) => {
+requestMultipleUrls(urls).then((content) => {
   console.log(content);
 });

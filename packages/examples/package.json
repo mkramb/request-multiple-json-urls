@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "ts-node ./src/index.ts"
+    "run:simple": "ts-node ./src/simple.ts",
+    "run:with-concurrency": "ts-node ./src/with-concurrency.ts",
+    "run:with-failure": "ts-node ./src/with-failure.ts",
+    "run:with-retry": "ts-node ./src/with-retry.ts"
   },
   "dependencies": {
     "@ft/library": "workspace:*"

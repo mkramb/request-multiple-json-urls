@@ -12,7 +12,6 @@
   ],
   "main": "dist/request-multiple-urls.cjs.js",
   "module": "dist/request-multiple-urls.esm.js",
-  "browser": "dist/request-multiple-urls.umd.js",
   "types": "dist/request-multiple-urls.d.ts",
   "scripts": {
     "build": "rollup -c",
@@ -23,8 +22,6 @@
     "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/async": "^3.2.10",
     "prettier": "^2.5.0",
