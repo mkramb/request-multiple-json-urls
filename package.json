@@ -6,5 +6,8 @@
     "packages/examples",
     "packages/library"
   ],
-  "packageManager": "yarn@3.1.1"
+  "scripts": {
+    "build": "yarn workspaces foreach -p -v -i run build",
+    "clean": "yarn workspaces foreach run clean"
+  }
 }
