@@ -17,10 +17,11 @@ const defaultOptions: RequestOptions = {
 };
 
 /**
- * Calculates the square root of a number.
+ * Request multiple urls which respond with JSON data.
  *
- * @param urls List of valid URLs, it's responsibility of user to validate them.
- * @param options Option object [[`RequestOptions`]] which controls internal behavior.
+ * @param urls List of valid URLs, it's responsibility of the user to validate them.
+ * @param options Option object [[`RequestOptions`]] which controls behavior.
+ *
  * @returns List of JSON contents, in the same order as they were provided.
  */
 async function requestMultipleJSONUrls(
