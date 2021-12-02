@@ -47,4 +47,4 @@ async function requestMultipleJSONUrls(
   return parallelLimit<ResponseJSON, ResponseJSON[], Error>(tasks, currentOptions.concurrencyLimit);
 }
 
-export { requestMultipleJSONUrls, FetchAPI, defaultOptions };
+export { requestMultipleJSONUrls, FetchAPI };
