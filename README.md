@@ -10,25 +10,26 @@ This is monorepo which contains multiple `packages`:
 - [NVM](https://github.com/nvm-sh/nvm/blob/master/README.md)
 - [Yarn2](https://yarnpkg.com/)
 
-## Install dependencies
+## Installation
 
+Yarn & Node setup:
 ```
 nvm install
+npm install -g yarn@berry
+```
+Install dependencies:
+
+```
 yarn install
 ```
 
 ## Local Development
 
-To build everything:
+To build everything and execute tests:
 
 ```
 yarn build
+yarn test
 ```
 
 Then follow `library` & `examples` README.
-For example:
-
-```
-cd packages/examples
-yarn start:simple
-```
