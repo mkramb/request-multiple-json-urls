@@ -12,7 +12,7 @@ This is monorepo which contains multiple `packages`:
 
 ## Installation
 
-Yarn & Node setup:
+Node & Yarn2 setup:
 ```
 nvm install
 npm install -g yarn@berry
