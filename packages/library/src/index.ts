@@ -19,7 +19,7 @@ const defaultOptions: RequestOptions = {
   fetch,
 };
 
-async function requestMultipleUrls(
+async function requestMultipleJSONUrls(
   urls: string[],
   options: Partial<RequestOptions> = {}
 ): Promise<ResponseJSON[]> {
@@ -55,4 +55,4 @@ async function requestMultipleUrls(
   });
 }
 
-export { requestMultipleUrls, defaultOptions, ResponseResults };
+export { requestMultipleJSONUrls, defaultOptions, ResponseResults };

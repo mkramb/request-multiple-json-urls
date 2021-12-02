@@ -1,6 +1,6 @@
 # @ft/library
 
-> Request multiple urls as doing a single request.
+> Request multiple urls which contain JSON data.
 
 ## Installation
 
@@ -11,7 +11,7 @@ npm install @ft/library
 ## Example usage
 
 ```
-import { requestMultipleUrls } from '@ft/library';
+import { requestMultipleJSONUrls } from '@ft/library';
 
 const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json',
@@ -19,7 +19,7 @@ const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-usd.json'
 ];
 
-requestMultipleUrls(urls, {
+requestMultipleJSONUrls(urls, {
   concurrencyLimit: 2,
   continueOnError: true
 }).then(content => {

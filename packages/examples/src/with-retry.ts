@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import fetchRetry from 'fetch-retry';
 
-import { requestMultipleUrls } from '@ft/library';
+import { requestMultipleJSONUrls } from '@ft/library';
 
 const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json',
@@ -16,7 +16,7 @@ const fetchWithRetry: typeof fetch = (url) =>
     retryDelay: 1000,
   });
 
-requestMultipleUrls(urls, {
+requestMultipleJSONUrls(urls, {
   continueOnError: true,
   fetch: fetchWithRetry,
 }).then((content) => {

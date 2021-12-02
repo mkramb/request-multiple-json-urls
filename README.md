@@ -1,4 +1,4 @@
-# request-multiple-urls
+# request-multiple-json-urls
 
 This is monorepo which contains multiple `packages`:
 
