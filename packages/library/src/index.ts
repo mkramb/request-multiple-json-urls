@@ -16,6 +16,13 @@ const defaultOptions: RequestOptions = {
   fetch,
 };
 
+/**
+ * Calculates the square root of a number.
+ *
+ * @param urls List of valid URLs, it's responsibility of user to validate them.
+ * @param options Option object [[`RequestOptions`]] which controls internal behavior.
+ * @returns List of JSON contents, in the same order as they were provided.
+ */
 async function requestMultipleJSONUrls(
   urls: string[],
   options: Partial<RequestOptions> = {}
@@ -47,4 +54,4 @@ async function requestMultipleJSONUrls(
   return parallelLimit<ResponseJSON, ResponseJSON[], Error>(tasks, currentOptions.concurrencyLimit);
 }
 
-export { requestMultipleJSONUrls, FetchAPI };
+export { requestMultipleJSONUrls, FetchAPI, RequestOptions, ResponseJSON };

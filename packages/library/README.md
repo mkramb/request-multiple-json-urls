@@ -22,6 +22,15 @@ And to execute library tests:
 yarn test
 ```
 
+## Documentation
+
+Generate API docs using:
+
+```
+yarn docs
+open docs/index.html
+```
+
 ## Example usage
 
 ```
