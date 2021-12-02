@@ -2,10 +2,10 @@
 
 # Description
 
-Example usage of `@ftp/library`, can be used for validation.
+A playground for `@ftp/library`, can be used for validation & prototyping on new features.
 
 
-# Examples
+# Provided examples
 
 - `yarn run:simple`
 - `yarn run:with-concurrency`

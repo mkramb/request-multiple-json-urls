@@ -9,7 +9,9 @@
     "run:with-retry": "ts-node ./src/with-retry.ts"
   },
   "dependencies": {
-    "@ft/library": "workspace:*"
+    "@ft/library": "workspace:*",
+    "fetch-retry": "^5.0.1",
+    "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.11",

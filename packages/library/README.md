@@ -20,18 +20,9 @@ const urls = [
 ];
 
 requestMultipleUrls(urls, {
-  concurrency: 2,
-  onErrorContinue: true
-  onErrorCallback: (error) => {
-    console.error(error);
-  })
+  concurrencyLimit: 2,
+  continueOnError: true
 }).then(content => {
   console.log(content);
 });
 ```
-
-## Default options
-
-- `concurrency` - 2
-- `onErrorContinue` - false
-- `onErrorCallback` - () => {}

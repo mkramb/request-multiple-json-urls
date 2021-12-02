@@ -31,7 +31,7 @@ async function requestMultipleUrls(
   const tasks = urls.map((url): AsyncFunction<ResponseJSON, Error> => {
     return async (callback) => {
       try {
-        const response = await fetch(url);
+        const response = await currentOptions.fetch(url);
         const content: ResponseJSON = await response.json();
 
         callback(null, content);
@@ -55,4 +55,4 @@ async function requestMultipleUrls(
   });
 }
 
-export { requestMultipleUrls, ResponseResults };
+export { requestMultipleUrls, defaultOptions, ResponseResults };
