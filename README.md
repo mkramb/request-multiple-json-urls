@@ -25,4 +25,10 @@ To build everything:
 yarn build
 ```
 
-And then follow `library` & `examples` README.
+Then follow `library` & `examples` README.
+For example:
+
+```
+cd packages/examples
+yarn start:simple
+```

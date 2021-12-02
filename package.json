@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach -p -v -i run build",
-    "clean": "yarn workspaces foreach run clean"
+    "clean": "yarn workspaces foreach run clean",
+    "test": "yarn workspaces foreach run test"
   }
 }

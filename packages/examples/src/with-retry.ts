@@ -20,5 +20,5 @@ requestMultipleJSONUrls(urls, {
   continueOnError: true,
   fetch: fetchWithRetry,
 }).then((content) => {
-  console.log(content);
+  console.log(JSON.stringify(content, null, 2));
 });

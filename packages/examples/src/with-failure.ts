@@ -10,5 +10,5 @@ const urls = [
 requestMultipleJSONUrls(urls, {
   continueOnError: true,
 }).then((content) => {
-  console.log(content);
+  console.log(JSON.stringify(content, null, 2));
 });

@@ -1,17 +1,14 @@
 import fetch from 'isomorphic-unfetch';
 import { parallelLimit, AsyncFunction } from 'async';
 
+type FetchAPI = typeof fetch;
+type ResponseJSON = Record<string, unknown>;
+
 interface RequestOptions {
   readonly concurrencyLimit: number;
   readonly continueOnError: boolean;
-  readonly fetch: typeof fetch;
+  readonly fetch: FetchAPI;
 }
-
-type ResponseJSON = Record<string, unknown>;
-type ResponseResults = {
-  readonly data: { items: ResponseJSON[] };
-  readonly timeGenerated: string;
-};
 
 const defaultOptions: RequestOptions = {
   concurrencyLimit: 1,
@@ -36,8 +33,10 @@ async function requestMultipleJSONUrls(
 
         callback(null, content);
       } catch (error) {
+        const emptyResponse = {};
+
         if (currentOptions.continueOnError) {
-          callback(null);
+          callback(null, emptyResponse);
         } else {
           callback(error as Error);
         }
@@ -45,14 +44,7 @@ async function requestMultipleJSONUrls(
     };
   });
 
-  const results = await parallelLimit<ResponseJSON, ResponseResults[], Error>(
-    tasks,
-    currentOptions.concurrencyLimit
-  );
-
-  return results.map((result) => {
-    return result?.data?.items?.[0] ?? null;
-  });
+  return parallelLimit<ResponseJSON, ResponseJSON[], Error>(tasks, currentOptions.concurrencyLimit);
 }
 
-export { requestMultipleJSONUrls, defaultOptions, ResponseResults };
+export { requestMultipleJSONUrls, FetchAPI, defaultOptions };
