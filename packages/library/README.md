@@ -8,6 +8,20 @@
 npm install @ft/library
 ```
 
+## Development
+
+To start build in watch mode:
+
+```
+yarn build -w
+```
+
+And to execute library tests:
+
+```
+yarn test
+```
+
 ## Example usage
 
 ```
