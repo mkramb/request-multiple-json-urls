@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import fetchRetry from 'fetch-retry';
 
-import { requestMultipleJSONUrls } from '@ft/library';
+import { requestMultipleJSONUrls, FetchAPI } from '@ft/library';
 
 const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json',
@@ -10,7 +10,7 @@ const urls = [
   'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-usd.json',
 ];
 
-const fetchWithRetry: typeof fetch = (url) =>
+const fetchWithRetry: FetchAPI = (url) =>
   fetchRetry(fetch)(url, {
     retries: 10,
     retryDelay: 1000,
